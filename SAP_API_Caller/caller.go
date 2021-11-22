@@ -65,7 +65,7 @@ func (c *SAPAPICaller) PurchasingSourceListSupplier(Material, Plant, Supplier, V
 
 }
 
-func (c *SAPAPICaller) PurchasingSourceListSupplyingPlant(BMaterial, Plant, SupplyingPlant, VaridityEndDate string) {
+func (c *SAPAPICaller) PurchasingSourceListSupplyingPlant(Material, Plant, SupplyingPlant, VaridityEndDate string) {
 	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplyingPlant("/A_PurchasingSource", Material, Plant, SupplyingPlant, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)
