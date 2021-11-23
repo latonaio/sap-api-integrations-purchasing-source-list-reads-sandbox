@@ -44,7 +44,7 @@ func (c *SAPAPICaller) AsyncGetPurchasingSourceList(Material, Plant, Supplier, S
 }
 
 func (c *SAPAPICaller) PurchasingSourceList(Material, Plant, VaridityEndDate string) {
-	res, err := c.callPurchasingSourceListSrvAPIRequirementList("/A_PurchasingSource", Material, Plant, VaridityEndDate)
+	res, err := c.callPurchasingSourceListSrvAPIRequirementList("A_PurchasingSource", Material, Plant, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -55,7 +55,7 @@ func (c *SAPAPICaller) PurchasingSourceList(Material, Plant, VaridityEndDate str
 }
 
 func (c *SAPAPICaller) PurchasingSourceListSupplier(Material, Plant, Supplier, VaridityEndDate string) {
-	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplier("/A_PurchasingSource", Material, Plant, Supplier, VaridityEndDate)
+	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplier("A_PurchasingSource", Material, Plant, Supplier, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -66,7 +66,7 @@ func (c *SAPAPICaller) PurchasingSourceListSupplier(Material, Plant, Supplier, V
 }
 
 func (c *SAPAPICaller) PurchasingSourceListSupplyingPlant(Material, Plant, SupplyingPlant, VaridityEndDate string) {
-	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplyingPlant("/A_PurchasingSource", Material, Plant, SupplyingPlant, VaridityEndDate)
+	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplyingPlant("A_PurchasingSource", Material, Plant, SupplyingPlant, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)
 		return
