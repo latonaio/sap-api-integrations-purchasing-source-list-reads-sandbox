@@ -76,7 +76,7 @@ func (c *SAPAPICaller) PurchasingSourceListSupplyingPlant(Material, Plant, Suppl
 
 }
 
-func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementList(api, Material, Plant, VaridityEndDate, string) ([]byte, error) {
+func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementList(api, Material, Plant, VaridityEndDate string) ([]byte, error) {
 	url := strings.Join([]string{c.baseURL, "API_PURCHASING_SOURCE_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
