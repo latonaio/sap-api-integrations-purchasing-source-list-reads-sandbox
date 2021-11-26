@@ -6,7 +6,7 @@ type PurchasingSourceListReads struct {
 	RedisKey             string `json:"redis_key"`
 	Filepath             string `json:"filepath"`
 	APISchema            string `json:"api_schema"`
-	Material             string `json:"material_code"`
+	MaterialCode         string `json:"material_code"`
 	Plant                string `json:"plant"`
 	SourceListRecord     int    `json:"source_list_record"`
 	Deleted              string `json:"deleted"`
