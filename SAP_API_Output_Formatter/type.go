@@ -1,6 +1,6 @@
 package sap_api_output_formatter
 
-type PurchasingSourceListReads struct {
+type PurchasingSourceList struct {
 	ConnectionKey    string `json:"connection_key"`
 	Result           bool   `json:"result"`
 	RedisKey         string `json:"redis_key"`
@@ -12,7 +12,7 @@ type PurchasingSourceListReads struct {
 	Deleted          bool   `json:"deleted"`
 }
 
-type PurchasingSourceList struct {
+type List struct {
 	Material                   string `json:"Material"`
 	Plant                      string `json:"Plant"`
 	SourceListRecord           string `json:"SourceListRecord"`

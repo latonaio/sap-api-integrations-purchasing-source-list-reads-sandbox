@@ -29,21 +29,21 @@ func (c *SAPAPICaller) AsyncGetPurchasingSourceList(Material, Plant, Supplier, S
 
 	wg.Add(3)
 	go func() {
-		c.PurchasingSourceList(Material, Plant, VaridityEndDate)
+		c.List(Material, Plant, VaridityEndDate)
 		wg.Done()
 	}()
 	go func() {
-		c.PurchasingSourceListSupplier(Material, Plant, Supplier, VaridityEndDate)
+		c.Supplier(Material, Plant, Supplier, VaridityEndDate)
 		wg.Done()
 	}()
 	go func() {
-		c.PurchasingSourceListSupplyingPlant(Material, Plant, SupplyingPlant, VaridityEndDate)
+		c.SupplyingPlant(Material, Plant, SupplyingPlant, VaridityEndDate)
 		wg.Done()
 	}()
 	wg.Wait()
 }
 
-func (c *SAPAPICaller) PurchasingSourceList(Material, Plant, VaridityEndDate string) {
+func (c *SAPAPICaller) List(Material, Plant, VaridityEndDate string) {
 	res, err := c.callPurchasingSourceListSrvAPIRequirementList("A_PurchasingSource", Material, Plant, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)
@@ -54,7 +54,7 @@ func (c *SAPAPICaller) PurchasingSourceList(Material, Plant, VaridityEndDate str
 
 }
 
-func (c *SAPAPICaller) PurchasingSourceListSupplier(Material, Plant, Supplier, VaridityEndDate string) {
+func (c *SAPAPICaller) Supplier(Material, Plant, Supplier, VaridityEndDate string) {
 	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplier("A_PurchasingSource", Material, Plant, Supplier, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)
@@ -65,7 +65,7 @@ func (c *SAPAPICaller) PurchasingSourceListSupplier(Material, Plant, Supplier, V
 
 }
 
-func (c *SAPAPICaller) PurchasingSourceListSupplyingPlant(Material, Plant, SupplyingPlant, VaridityEndDate string) {
+func (c *SAPAPICaller) SupplyingPlant(Material, Plant, SupplyingPlant, VaridityEndDate string) {
 	res, err := c.callPurchasingSourceListSrvAPIRequirementSupplyingPlant("A_PurchasingSource", Material, Plant, SupplyingPlant, VaridityEndDate)
 	if err != nil {
 		c.log.Error(err)

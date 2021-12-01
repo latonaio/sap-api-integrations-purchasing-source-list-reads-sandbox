@@ -1,6 +1,6 @@
 package responses
 
-type PurchasingSourceList struct {
+type List struct {
 	D struct {
 		Results []struct {
 			Metadata struct {
