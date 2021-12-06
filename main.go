@@ -18,8 +18,8 @@ func main() {
 	caller.AsyncGetPurchasingSourceList(
 		inoutSDC.List.Material,
 		inoutSDC.List.Plant,
+		inoutSDC.List.SourceListRecord,
 		inoutSDC.List.Supplier,
 		inoutSDC.List.SupplyingPlant,
-		inoutSDC.List.ValidityEndDate,
 	)
 }

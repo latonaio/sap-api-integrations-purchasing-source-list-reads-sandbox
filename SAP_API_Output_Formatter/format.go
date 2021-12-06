@@ -5,21 +5,21 @@ import (
 	"sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/responses"
 
 	"github.com/latonaio/golang-logging-library/logger"
+	"golang.org/x/xerrors"
 )
 
-func ConvertToList(raw []byte, l *logger.Logger) *List {
+func ConvertToList(raw []byte, l *logger.Logger) (*List, error) {
 	pm := &responses.List{}
+
 	err := json.Unmarshal(raw, pm)
 	if err != nil {
-		l.Error(err)
-		return nil
+		return nil, xerrors.Errorf("cannot convert to List. unmarshal error: %w", err)
 	}
 	if len(pm.D.Results) == 0 {
-		l.Error("Result data is not exist.")
-		return nil
+		return nil, xerrors.New("Result data is not exist")
 	}
 	if len(pm.D.Results) > 1 {
-		l.Error("raw data has too many Results. %d Results exist. expected only 1 Result. Use the first of Results array", len(pm.D.Results))
+		l.Info("raw data has too many Results. %d Results exist. expected only 1 Result. Use the first of Results array", len(pm.D.Results))
 	}
 	data := pm.D.Results[0]
 
@@ -28,7 +28,7 @@ func ConvertToList(raw []byte, l *logger.Logger) *List {
 		Plant:                      data.Plant,
 		SourceListRecord:           data.SourceListRecord,
 		ValidityStartDate:          data.ValidityStartDate,
-		ValidityEndDate             data.ValidityEndDate,
+		ValidityEndDate:            data.ValidityEndDate,
 		Supplier:                   data.Supplier,
 		PurchasingOrganization:     data.PurchasingOrganization,
 		SupplyingPlant:             data.SupplyingPlant,
@@ -41,5 +41,5 @@ func ConvertToList(raw []byte, l *logger.Logger) *List {
 		IssgPlantIsFixed:           data.IssgPlantIsFixed,
 		PurOutlineAgreementIsFixed: data.PurOutlineAgreementIsFixed,
 		SourceOfSupplyIsFixed:      data.SourceOfSupplyIsFixed,
-	}
+	}, nil
 }

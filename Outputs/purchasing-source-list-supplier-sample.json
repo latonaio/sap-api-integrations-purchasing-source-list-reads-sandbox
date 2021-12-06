@@ -1,0 +1,7 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L84",
+	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).Supplier",
+	"level": "INFO",
+	"message": "&{Material:RM128 Plant:1710 SourceListRecord:1 ValidityStartDate:/Date(1467331200000)/ ValidityEndDate:/Date(1592697600000)/ Supplier:17300001 PurchasingOrganization:1710 SupplyingPlant: OrderQuantityUnit:PC PurchaseOutlineAgreement:5600001710 SupplierIsFixed:false SourceOfSupplyIsBlocked:false MRPSourcingControl:2 LastChangeDateTime:/Date(1562833206104+0000)/ IssgPlantIsFixed:false PurOutlineAgreementIsFixed:true SourceOfSupplyIsFixed:true}",
+	"time": "2021-12-06T15:50:33.716527+09:00"
+}
