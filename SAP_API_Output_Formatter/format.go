@@ -7,8 +7,8 @@ import (
 	"github.com/latonaio/golang-logging-library/logger"
 )
 
-func ConvertToPurchasingSourceList(raw []byte, l *logger.Logger) *PurchasingSourceList {
-	pm := &responses.PurchasingSourceList{}
+func ConvertToList(raw []byte, l *logger.Logger) *List {
+	pm := &responses.List{}
 	err := json.Unmarshal(raw, pm)
 	if err != nil {
 		l.Error(err)
@@ -23,23 +23,23 @@ func ConvertToPurchasingSourceList(raw []byte, l *logger.Logger) *PurchasingSour
 	}
 	data := pm.D.Results[0]
 
-	return &PurchasingSourceList{
-		Material                   data.Material,
-		Plant                      data.Plant,
-		SourceListRecord           data.SourceListRecord,
-		ValidityStartDate          data.ValidityStartDate,
-		ValidityEndDate            data.ValidityEndDate,
-		Supplier                   data.Supplier,
-		PurchasingOrganization     data.PurchasingOrganization,
-		SupplyingPlant             data.SupplyingPlant,
-		OrderQuantityUnit          data.OrderQuantityUnit,
-		PurchaseOutlineAgreement   data.PurchaseOutlineAgreement,
-		SupplierIsFixed            data.SupplierIsFixed,
-		SourceOfSupplyIsBlocked    data.SourceOfSupplyIsBlocked,
-		MRPSourcingControl         data.MRPSourcingControl,
-		LastChangeDateTime         data.LastChangeDateTime,
-		IssgPlantIsFixed           data.IssgPlantIsFixed,
-		PurOutlineAgreementIsFixed data.PurOutlineAgreementIsFixed,
-		SourceOfSupplyIsFixed      data.SourceOfSupplyIsFixed,
+	return &List{
+		Material:                   data.Material,
+		Plant:                      data.Plant,
+		SourceListRecord:           data.SourceListRecord,
+		ValidityStartDate:          data.ValidityStartDate,
+		ValidityEndDate             data.ValidityEndDate,
+		Supplier:                   data.Supplier,
+		PurchasingOrganization:     data.PurchasingOrganization,
+		SupplyingPlant:             data.SupplyingPlant,
+		OrderQuantityUnit:          data.OrderQuantityUnit,
+		PurchaseOutlineAgreement:   data.PurchaseOutlineAgreement,
+		SupplierIsFixed:            data.SupplierIsFixed,
+		SourceOfSupplyIsBlocked:    data.SourceOfSupplyIsBlocked,
+		MRPSourcingControl:         data.MRPSourcingControl,
+		LastChangeDateTime:         data.LastChangeDateTime,
+		IssgPlantIsFixed:           data.IssgPlantIsFixed,
+		PurOutlineAgreementIsFixed: data.PurOutlineAgreementIsFixed,
+		SourceOfSupplyIsFixed:      data.SourceOfSupplyIsFixed,
 	}
 }

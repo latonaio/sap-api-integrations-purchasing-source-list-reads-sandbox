@@ -57,7 +57,7 @@ type SDC struct {
 	Result               bool   `json:"result"`
 	RedisKey             string `json:"redis_key"`
 	Filepath             string `json:"filepath"`
-	PurchasingSourceList struct {
+	List                 struct {
 		Material                   string   `json:"Material"`
 		Plant                      string   `json:"Plant"`
 		SourceListRecord           string   `json:"SourceListRecord"`
