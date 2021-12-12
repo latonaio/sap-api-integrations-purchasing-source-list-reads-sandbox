@@ -26,22 +26,32 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetPurchasingSourceList(material, plant, sourceListRecord, supplier, supplyingPlant string) {
+func (c *SAPAPICaller) AsyncGetPurchasingSourceList(material, plant, sourceListRecord, supplier, supplyingPlant string, accepter []string) {
 	wg := &sync.WaitGroup{}
+	wg.Add(len(accepter))
+	for _, fn := range accepter {
+		switch fn {
+		case "List":
+			func() {
+				c.List(material, plant, sourceListRecord)
+				wg.Done()
+			}()
+		case "Supplier":
+			func() {
+				c.Supplier(material, plant, sourceListRecord, supplier)
+				wg.Done()
+			}()
+		case "SupplyingPlant":
+			func() {
+				c.SupplyingPlant(material, plant, sourceListRecord, supplyingPlant)
+				wg.Done()
+			}()
 
-	wg.Add(3)
-	func() {
-		c.List(material, plant, sourceListRecord)
-		wg.Done()
-	}()
-	func() {
-		c.Supplier(material, plant, sourceListRecord, supplier)
-		wg.Done()
-	}()
-	func() {
-		c.SupplyingPlant(material, plant, sourceListRecord, supplyingPlant)
-		wg.Done()
-	}()
+		default:
+			wg.Done()
+		}
+	}
+
 	wg.Wait()
 }
 
