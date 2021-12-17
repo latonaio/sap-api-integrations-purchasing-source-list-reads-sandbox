@@ -49,7 +49,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
   
 ```
 	"api_schema": "/A_PurchasingSource",
-	"accepter": ["List","Supplier"],
+	"accepter": ["List", "Supplier"],
 	"material_code": "RM128",
 	"plant": "1710",
 	"source_list_record": "1",
@@ -102,5 +102,20 @@ func (c *SAPAPICaller) AsyncGetPurchasingSourceList(material, plant, sourceListR
 	}
 
 	wg.Wait()
+}
+```
+
+## Output  
+本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。  
+以下の sample.json の例は、SAP 供給元一覧 が取得された結果の JSON の例です。  
+以下の項目のうち、"BaseUnit" ～ "WeightUnit" は、/SAP_API_Output_Formatter/type.go 内 の Type Product {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
+
+```
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L54",
+	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).List",
+	"level": "INFO",
+	"message": "&{Material:RM128 Plant:1710 SourceListRecord:1 ValidityStartDate:/Date(1467331200000)/ ValidityEndDate:/Date(1592697600000)/ Supplier:17300001 PurchasingOrganization:1710 SupplyingPlant: OrderQuantityUnit:PC PurchaseOutlineAgreement:5600001710 SupplierIsFixed:false SourceOfSupplyIsBlocked:false MRPSourcingControl:2 LastChangeDateTime:/Date(1562833206104+0000)/ IssgPlantIsFixed:false PurOutlineAgreementIsFixed:true SourceOfSupplyIsFixed:true}",
+	"time": "2021-12-06T15:48:00.406342+09:00"
 }
 ```

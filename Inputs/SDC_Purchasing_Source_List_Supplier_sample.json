@@ -23,7 +23,7 @@
 		"SourceOfSupplyIsFixed": false
 	},
 	"api_schema": "/A_PurchasingSource",
-	"accepter": ["List","Supplier"],
+	"accepter": ["List", "Supplier"],
 	"material_code": "RM128",
 	"plant": "1710",
 	"source_list_record": "1",
