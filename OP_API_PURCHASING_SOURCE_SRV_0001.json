@@ -1,0 +1,801 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Purchasing Source List",
+    "version": "1 ",
+    "description": "\r\n\r\nThis service enables you to perform the following actions using the data provided in an API call:\r\n - List purchasing source records according to the specific selection criteria (Query)\r\n - Get details of a purchasing source record (Single Read)\r\n - Create purchasing sources\r\n - Update purchasing sources\r\n - Delete purchasing sources\r\n"
+  },
+  "externalDocs": {
+    "description": "Business Documentation",
+    "url": "https://help.sap.com/http.svc/ahp2/SAP_S4HANA_ON-PREMISE/2021.000/EN/52/557d8944274b1fb4acf8cff41987f3/frameset.htm"
+  },
+  "x-sap-api-type": "ODATA",
+  "x-sap-shortText": "\r\nCreate purchasing source lists using the synchronous inbound service",
+  "x-sap-api-deprecated": "No",
+  "x-sap-software-min-version": "2021",
+  "x-sap-ext-overview": [
+    {
+      "name": "Authentication Methods",
+      "values": [
+        {
+          "text": "Basic, x509",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Business Object",
+      "values": [
+        {
+          "text": "Source List in Procurement",
+          "format": "plain"
+        }
+      ]
+    }
+  ],
+  "x-sap-stateInfo": {
+    "state": "active"
+  },
+  "security": [
+    {
+      "basicAuthentication": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{host}:{port}/sap/opu/odata/sap/API_PURCHASING_SOURCE_SRV",
+      "variables": {
+        "host": {
+          "default": ""
+        },
+        "port": {
+          "default": ""
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "Purchasing Source Type"
+    }
+  ],
+  "paths": {
+    "/A_PurchasingSource": {
+      "get": {
+        "summary": "Reads the purchasing source list information.",
+        "description": "Gets the general information of the purchasing source list in the system. Note that if there are many purchasing source lists in the system, this operation might take a while .",
+        "tags": [
+          "Purchasing Source Type"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Material",
+                  "Material desc",
+                  "Plant",
+                  "Plant desc",
+                  "SourceListRecord",
+                  "SourceListRecord desc",
+                  "CreationDate",
+                  "CreationDate desc",
+                  "CreatedByUserName",
+                  "CreatedByUserName desc",
+                  "ValidityStartDate",
+                  "ValidityStartDate desc",
+                  "ValidityEndDate",
+                  "ValidityEndDate desc",
+                  "Supplier",
+                  "Supplier desc",
+                  "SupplierIsFixed",
+                  "SupplierIsFixed desc",
+                  "PurchaseOutlineAgreement",
+                  "PurchaseOutlineAgreement desc",
+                  "PurchaseOutlineAgreementItem",
+                  "PurchaseOutlineAgreementItem desc",
+                  "SupplyingPlant",
+                  "SupplyingPlant desc",
+                  "SourceOfSupplyIsBlocked",
+                  "SourceOfSupplyIsBlocked desc",
+                  "PurchasingOrganization",
+                  "PurchasingOrganization desc",
+                  "MRPSourcingControl",
+                  "MRPSourcingControl desc",
+                  "OrderQuantityUnit",
+                  "OrderQuantityUnit desc",
+                  "LastChangeDateTime",
+                  "LastChangeDateTime desc",
+                  "IssgPlantIsFixed",
+                  "IssgPlantIsFixed desc",
+                  "PurOutlineAgreementIsFixed",
+                  "PurOutlineAgreementIsFixed desc",
+                  "SourceOfSupplyIsFixed",
+                  "SourceOfSupplyIsFixed desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Material",
+                  "Plant",
+                  "SourceListRecord",
+                  "CreationDate",
+                  "CreatedByUserName",
+                  "ValidityStartDate",
+                  "ValidityEndDate",
+                  "Supplier",
+                  "SupplierIsFixed",
+                  "PurchaseOutlineAgreement",
+                  "PurchaseOutlineAgreementItem",
+                  "SupplyingPlant",
+                  "SourceOfSupplyIsBlocked",
+                  "PurchasingOrganization",
+                  "MRPSourcingControl",
+                  "OrderQuantityUnit",
+                  "LastChangeDateTime",
+                  "IssgPlantIsFixed",
+                  "PurOutlineAgreementIsFixed",
+                  "SourceOfSupplyIsFixed"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Wrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "Collection of A_PurchasingSourceType",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a purchasing source list.",
+        "description": "Creates a purchasing source list in the system. It is mandatory to provide details such as, material, plant to create a purchasing source list.",
+        "tags": [
+          "Purchasing Source Type"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_PurchasingSourceType",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_PurchasingSource(Material='{Material}',Plant='{Plant}',SourceListRecord='{SourceListRecord}')": {
+      "parameters": [
+        {
+          "name": "Material",
+          "in": "path",
+          "required": true,
+          "description": "Material Number",
+          "schema": {
+            "type": "string",
+            "maxLength": 40
+          }
+        },
+        {
+          "name": "Plant",
+          "in": "path",
+          "required": true,
+          "description": "Plant",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "SourceListRecord",
+          "in": "path",
+          "required": true,
+          "description": "Number of Source List Record",
+          "schema": {
+            "type": "string",
+            "maxLength": 5
+          }
+        }
+      ],
+      "get": {
+        "summary": "Reads the purchasing source list information.",
+        "description": "Reads the purchasing source list in the system for a material, plant, source list record.",
+        "tags": [
+          "Purchasing Source Type"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Material",
+                  "Plant",
+                  "SourceListRecord",
+                  "CreationDate",
+                  "CreatedByUserName",
+                  "ValidityStartDate",
+                  "ValidityEndDate",
+                  "Supplier",
+                  "SupplierIsFixed",
+                  "PurchaseOutlineAgreement",
+                  "PurchaseOutlineAgreementItem",
+                  "SupplyingPlant",
+                  "SourceOfSupplyIsBlocked",
+                  "PurchasingOrganization",
+                  "MRPSourcingControl",
+                  "OrderQuantityUnit",
+                  "LastChangeDateTime",
+                  "IssgPlantIsFixed",
+                  "PurOutlineAgreementIsFixed",
+                  "SourceOfSupplyIsFixed"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_PurchasingSourceType",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Updates the purchasing source list.",
+        "description": "Updates the purchasing source list in the system using details such as, material, plant, source list record.",
+        "tags": [
+          "Purchasing Source Type"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Modified A_PurchasingSourceType",
+                "type": "object",
+                "properties": {
+                  "d": {
+                    "$ref": "#/components/schemas/API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType-update"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes the purchasing source list.",
+        "description": "Deletes the purchasing source list in the system for a material, plant, source list record.",
+        "tags": [
+          "Purchasing Source Type"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuthentication": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType": {
+        "type": "object",
+        "properties": {
+          "Material": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Material",
+            "description": "Material Number"
+          },
+          "Plant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "SourceListRecord": {
+            "type": "string",
+            "maxLength": 5,
+            "title": "Number",
+            "description": "Number of Source List Record"
+          },
+          "CreationDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Created On",
+            "description": "Date on Which Record Was Created"
+          },
+          "CreatedByUserName": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 12,
+            "title": "Created By",
+            "description": "Name of Person Responsible for Creating the Object"
+          },
+          "ValidityStartDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid from",
+            "description": "Source List Record Valid From"
+          },
+          "ValidityEndDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid to",
+            "description": "Source List Record Valid To"
+          },
+          "Supplier": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 10,
+            "title": "Supplier",
+            "description": "Vendor's account number"
+          },
+          "SupplierIsFixed": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Fixed Supplier",
+            "description": "Indicator: Fixed Supplier"
+          },
+          "PurchaseOutlineAgreement": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 10,
+            "title": "Agreement",
+            "description": "Agreement Number"
+          },
+          "PurchaseOutlineAgreementItem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 5,
+            "title": "Agreement Item"
+          },
+          "SupplyingPlant": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Procurement Plant",
+            "description": "Plant from Which Material is Procured"
+          },
+          "SourceOfSupplyIsBlocked": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Blocked",
+            "description": "Blocked Source of Supply"
+          },
+          "PurchasingOrganization": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Purch. Organization",
+            "description": "Purchasing Organization"
+          },
+          "MRPSourcingControl": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Materials Planning",
+            "description": "Source List Usage in Materials Planning"
+          },
+          "OrderQuantityUnit": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Order Unit",
+            "description": "Purchase Order Unit of Measure"
+          },
+          "LastChangeDateTime": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492098664000)/",
+            "title": "Time Stamp",
+            "description": "UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"
+          },
+          "IssgPlantIsFixed": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Fixed iss.plant",
+            "description": "Fixed issuing plant in case of stock transport order"
+          },
+          "PurOutlineAgreementIsFixed": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Fixed Agreement Item",
+            "description": "Fixed Outline Purchase Agreement Item"
+          },
+          "SourceOfSupplyIsFixed": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Fixed Supply Source",
+            "description": "Fixed Source of Supply"
+          }
+        },
+        "title": "Purchasing Source Type"
+      },
+      "API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType-create": {
+        "type": "object",
+        "properties": {
+          "Material": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Material",
+            "description": "Material Number"
+          },
+          "Plant": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Plant"
+          },
+          "ValidityStartDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid from",
+            "description": "Source List Record Valid From"
+          },
+          "ValidityEndDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid to",
+            "description": "Source List Record Valid To"
+          },
+          "Supplier": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 10,
+            "title": "Supplier",
+            "description": "Vendor's account number"
+          },
+          "PurchaseOutlineAgreement": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 10,
+            "title": "Agreement",
+            "description": "Agreement Number"
+          },
+          "PurchaseOutlineAgreementItem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 5,
+            "title": "Agreement Item"
+          },
+          "SupplyingPlant": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Procurement Plant",
+            "description": "Plant from Which Material is Procured"
+          },
+          "SourceOfSupplyIsBlocked": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Blocked",
+            "description": "Blocked Source of Supply"
+          },
+          "PurchasingOrganization": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Purch. Organization",
+            "description": "Purchasing Organization"
+          },
+          "MRPSourcingControl": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Materials Planning",
+            "description": "Source List Usage in Materials Planning"
+          },
+          "OrderQuantityUnit": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Order Unit",
+            "description": "Purchase Order Unit of Measure"
+          }
+        },
+        "required": [
+          "Material",
+          "Plant",
+          "ValidityStartDate",
+          "ValidityEndDate",
+          "Supplier",
+          "PurchasingOrganization"
+        ],
+        "title": "Purchasing Source Type (for create)"
+      },
+      "API_PURCHASING_SOURCE_SRV.A_PurchasingSourceType-update": {
+        "type": "object",
+        "properties": {
+          "ValidityStartDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid from",
+            "description": "Source List Record Valid From"
+          },
+          "ValidityEndDate": {
+            "type": "string",
+            "nullable": true,
+            "example": "/Date(1492041600000)/",
+            "title": "Valid to",
+            "description": "Source List Record Valid To"
+          },
+          "Supplier": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 10,
+            "title": "Supplier",
+            "description": "Vendor's account number"
+          },
+          "PurchaseOutlineAgreement": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 10,
+            "title": "Agreement",
+            "description": "Agreement Number"
+          },
+          "PurchaseOutlineAgreementItem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 5,
+            "title": "Agreement Item"
+          },
+          "SupplyingPlant": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Procurement Plant",
+            "description": "Plant from Which Material is Procured"
+          },
+          "SourceOfSupplyIsBlocked": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Blocked",
+            "description": "Blocked Source of Supply"
+          },
+          "PurchasingOrganization": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Purch. Organization",
+            "description": "Purchasing Organization"
+          },
+          "MRPSourcingControl": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1,
+            "title": "Materials Planning",
+            "description": "Source List Usage in Materials Planning"
+          },
+          "OrderQuantityUnit": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 3,
+            "title": "Order Unit",
+            "description": "Purchase Order Unit of Measure"
+          }
+        },
+        "title": "Purchasing Source Type (for update)"
+      },
+      "count": {
+        "type": "string",
+        "description": "The number of entities in the collection. Available when using the [$inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "object",
+                "required": [
+                  "lang",
+                  "value"
+                ],
+                "properties": {
+                  "lang": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$inlinecount",
+        "in": "query",
+        "description": "Include count of items, see [Inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67)",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "allpages",
+            "none"
+          ]
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
