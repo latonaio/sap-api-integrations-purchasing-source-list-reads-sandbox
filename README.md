@@ -106,16 +106,34 @@ func (c *SAPAPICaller) AsyncGetPurchasingSourceList(material, plant, sourceListR
 ```
 
 ## Output  
-本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。  
+本マイクロサービスでは、[golang-logging-library-for-sap](https://github.com/latonaio/golang-logging-library-for-sap) により、以下のようなデータがJSON形式で出力されます。  
 以下の sample.json の例は、SAP 供給元一覧 が取得された結果の JSON の例です。  
-以下の項目のうち、"Material" ～ "SourceOfSupplyIsFixed" は、/SAP_API_Output_Formatter/type.go 内 の Type List {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
+以下の項目のうち、"Material" ～ "SourceOfSupplyIsFixed" は、/SAP_API_Output_Formatter/type.go 内 の Type List {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。  
 
 ```
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L54",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L64",
 	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).List",
 	"level": "INFO",
-	"message": "&{Material:RM128 Plant:1710 SourceListRecord:1 ValidityStartDate:/Date(1467331200000)/ ValidityEndDate:/Date(1592697600000)/ Supplier:17300001 PurchasingOrganization:1710 SupplyingPlant: OrderQuantityUnit:PC PurchaseOutlineAgreement:5600001710 SupplierIsFixed:false SourceOfSupplyIsBlocked:false MRPSourcingControl:2 LastChangeDateTime:/Date(1562833206104+0000)/ IssgPlantIsFixed:false PurOutlineAgreementIsFixed:true SourceOfSupplyIsFixed:true}",
-	"time": "2021-12-06T15:48:00.406342+09:00"
+	"message": {
+		"Material": "RM128",
+		"Plant": "1710",
+		"SourceListRecord": "1",
+		"ValidityStartDate": "2016-07-01T09:00:00+09:00",
+		"ValidityEndDate": "2020-06-21T09:00:00+09:00",
+		"Supplier": "17300001",
+		"PurchasingOrganization": "1710",
+		"SupplyingPlant": "",
+		"OrderQuantityUnit": "PC",
+		"PurchaseOutlineAgreement": "5600001710",
+		"SupplierIsFixed": false,
+		"SourceOfSupplyIsBlocked": false,
+		"MRPSourcingControl": "2",
+		"LastChangeDateTime": "",
+		"IssgPlantIsFixed": false,
+		"PurOutlineAgreementIsFixed": true,
+		"SourceOfSupplyIsFixed": true
+	},
+	"time": "2022-01-28T10:24:28+09:00"
 }
 ```

@@ -1,6 +1,6 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L124",
-	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).SupplyingPlant",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L64",
+	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).List",
 	"level": "INFO",
 	"message": {
 		"Material": "RM128",
@@ -21,5 +21,5 @@
 		"PurOutlineAgreementIsFixed": true,
 		"SourceOfSupplyIsFixed": true
 	},
-	"time": "2022-01-28T10:26:35+09:00"
+	"time": "2022-01-28T10:24:28+09:00"
 }
