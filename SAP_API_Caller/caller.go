@@ -64,7 +64,7 @@ func (c *SAPAPICaller) List(material, plant, sourceListRecord string) {
 	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementList(api, material, plant, sourceListRecord string) (*sap_api_output_formatter.List, error) {
+func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementList(api, material, plant, sourceListRecord string) ([]sap_api_output_formatter.List, error) {
 	url := strings.Join([]string{c.baseURL, "API_PURCHASING_SOURCE_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -94,7 +94,7 @@ func (c *SAPAPICaller) Supplier(material, plant, sourceListRecord, supplier stri
 	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementSupplier(api, material, plant, sourceListRecord, supplier string) (*sap_api_output_formatter.List, error) {
+func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementSupplier(api, material, plant, sourceListRecord, supplier string) ([]sap_api_output_formatter.List, error) {
 	url := strings.Join([]string{c.baseURL, "API_PURCHASING_SOURCE_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -124,7 +124,7 @@ func (c *SAPAPICaller) SupplyingPlant(material, plant, sourceListRecord, supplyi
 	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementSupplyingPlant(api, material, plant, sourceListRecord, supplyingPlant string) (*sap_api_output_formatter.List, error) {
+func (c *SAPAPICaller) callPurchasingSourceListSrvAPIRequirementSupplyingPlant(api, material, plant, sourceListRecord, supplyingPlant string) ([]sap_api_output_formatter.List, error) {
 	url := strings.Join([]string{c.baseURL, "API_PURCHASING_SOURCE_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
