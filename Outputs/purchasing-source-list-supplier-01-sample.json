@@ -1,6 +1,6 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L64",
-	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).List",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller/caller.go#L94",
+	"function": "sap-api-integrations-purchasing-source-list-reads/SAP_API_Caller.(*SAPAPICaller).Supplier",
 	"level": "INFO",
 	"message": [
 		{
@@ -23,5 +23,5 @@
 			"SourceOfSupplyIsFixed": true
 		}
 	],
-	"time": "2022-01-29T15:42:33+09:00"
+	"time": "2022-01-29T15:39:10+09:00"
 }
